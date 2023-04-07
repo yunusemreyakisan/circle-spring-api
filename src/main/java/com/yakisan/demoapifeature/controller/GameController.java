@@ -28,21 +28,21 @@ public class GameController {
     }
 
     //Oyun ekler ve tum oyunlari geri dondurur.
-    @PostMapping(value = "/games/add")
+    @PostMapping(value = "/add")
     public List<Game> addGame(@RequestBody final Game game) {
         repository.save(game);
         return repository.findAll();
     }
 
     //Oyunu siler.
-    @DeleteMapping("/games/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteById(@PathVariable("id") int id) {
         repository.deleteById(id);
         return id + " id'li oyun silindi.";
     }
 
     //Oyunu gunceller.
-    @PutMapping("/games/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Game> updateGame(@PathVariable int id,@RequestBody Game gameDetail) {
         Game updateGame = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id + " id'li oyun bulunamadı"));
