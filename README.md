@@ -23,7 +23,7 @@ spring.jpa.hibernate.ddl-auto=update
 #### POST Method
 
 ```http
-  POST /games/add/
+  POST /add
 ```
 > Tüm oyun listesine oyun eklemenize olanak sağlar.
 JSON formatında body bekler.
@@ -41,7 +41,7 @@ JSON formatında body bekler.
 #### DELETE Method
 > Tüm oyun listesinden id'si ile istenilen oyun silinir.
 ```http
-  DELETE /games/delete/{id}
+  DELETE /delete/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -53,7 +53,7 @@ JSON formatında body bekler.
 > Tüm oyun listesinden id'si ile istenilen oyun güncellenir.
 
 ```http
-  PUT /games/update/{id}
+  PUT /update/{id}
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
