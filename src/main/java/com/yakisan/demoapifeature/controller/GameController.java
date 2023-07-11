@@ -3,6 +3,7 @@ package com.yakisan.demoapifeature.controller;
 import com.yakisan.demoapifeature.exception.ResourceNotFoundException;
 import com.yakisan.demoapifeature.model.Game;
 import com.yakisan.demoapifeature.repository.GameRepository;
+import com.yakisan.demoapifeature.service.GameService;
 import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,33 +19,34 @@ import java.util.List;
 @RestController
 @Table(name = "game")
 public class GameController {
+
     @Autowired
-    GameRepository repository;
+    GameService service;
 
     //Oyunlari geri dondurur.
     @GetMapping(value = "/games")
     public List<Game> getAllGames() {
-        return repository.findAll();
+        return service.getAllGames();
     }
 
     //Oyun ekler ve tum oyunlari geri dondurur.
     @PostMapping(value = "/add")
     public List<Game> addGame(@RequestBody final Game game) {
-        repository.save(game);
-        return repository.findAll();
+        service.addGame(game);
+        return service.getAllGames();
     }
 
     //Oyunu siler.
     @DeleteMapping("/delete/{id}")
     public String deleteById(@PathVariable("id") int id) {
-        repository.deleteById(id);
+        service.deleteById(id);
         return id + " id'li oyun silindi.";
     }
 
     //Oyunu gunceller.
     @PutMapping("/update/{id}")
-    public ResponseEntity<Game> updateGame(@PathVariable int id,@RequestBody Game gameDetail) {
-        Game updateGame = repository.findById(id)
+    public Game updateGame(@PathVariable int id,@RequestBody Game gameDetail) {
+        Game updateGame = service.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id + " id'li oyun bulunamadı"));
 
         updateGame.setName(gameDetail.getName());
@@ -53,9 +55,8 @@ public class GameController {
         updateGame.setGenre(gameDetail.getGenre());
 
         //oyunu veritabaninda guncelle
-        repository.save(updateGame);
-
-        return ResponseEntity.ok(updateGame);
+        service.updateGame(updateGame);
+        return updateGame;
     }
 
 }
