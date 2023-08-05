@@ -1,16 +1,12 @@
 package com.yakisan.demoapifeature.controller;
 
 import com.yakisan.demoapifeature.exception.ResourceNotFoundException;
-import com.yakisan.demoapifeature.model.Game;
-import com.yakisan.demoapifeature.repository.GameRepository;
+import com.yakisan.demoapifeature.entity.Game;
 import com.yakisan.demoapifeature.service.GameService;
 import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**

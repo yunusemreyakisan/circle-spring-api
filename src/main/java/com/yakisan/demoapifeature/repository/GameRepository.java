@@ -1,6 +1,6 @@
 package com.yakisan.demoapifeature.repository;
 
-import com.yakisan.demoapifeature.model.Game;
+import com.yakisan.demoapifeature.entity.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

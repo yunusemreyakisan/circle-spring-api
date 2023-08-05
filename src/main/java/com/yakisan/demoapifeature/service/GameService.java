@@ -1,6 +1,6 @@
 package com.yakisan.demoapifeature.service;
 
-import com.yakisan.demoapifeature.model.Game;
+import com.yakisan.demoapifeature.entity.Game;
 import com.yakisan.demoapifeature.repository.GameRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
